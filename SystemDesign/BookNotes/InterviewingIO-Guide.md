@@ -15,9 +15,19 @@ Estimated Completion Time = 6 hours
 * Ask details around what type of sercice the interviewer wants you to build: who are the users, what type of traffic, what limits?
 * Example: Data model with an ID introduced:
   * Are IDs exposed to users? How long do they need to be t oavoid collisions? Visibility from auto incrementing and guessing ids? Confusing characters like 1,0?
-
+* Anchor Decisions in the **user experiences** they create
+  * Example: Log in before uploading a picture: pros and cons to each approach
+* Red Flags and Green Flags
+  * G: Communicate honestly about what you do and don't know
+  * Embrace Feedback, make it collaborative
+  * Direct more of the interview
+  * Don't leave long stretches of silence
+  * Weight pros and cons, but **make a decision** before moving on to other components. "Based on all these tradeoffs, I'll use this type"
+* Say the generic name of a component, not a brannd name. Don't say "Kafka", say "a queue"
 
 ## Part 2: 15 Fundamental System Design Concepts
+
+Time: *70 minute read, 2.5 hours of videos*
 
 ## Part 3: A 3 Step Framework to crush any system Design interview
 
