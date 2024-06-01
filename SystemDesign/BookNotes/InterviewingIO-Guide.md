@@ -31,7 +31,11 @@ Time: *70 minute read, 2.5 hours of videos*
 
 ## Part 3: A 3 Step Framework to crush any system Design interview
 
+Time: *40 minute read*
+
 ## Part 4: Watch us design simple systems from scratch, adn learn how to get unstuck
+
+Time: *80 minute read*
 
 ## Questions for Later
 
