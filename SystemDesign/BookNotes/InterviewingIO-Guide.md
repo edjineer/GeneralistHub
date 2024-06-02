@@ -82,13 +82,23 @@ Three Core Concepts
 
 2. Databases (SQL vs NoSQL)
     * SQL
-      * **Basics:**
+      * **Basics:** Comprised of tables, where each row is a data entity, and each col is info about the field. Each table has bits that connect.
       * **Strengths:**
+        * More powerful querying out of the box
+        * Stronger ACID guarantees out of the box. Preferred if you want customers to always see up to date info, even if there is a delay.
+          * Atomic: transaction completes in its entirety without failures, or else it is reverted. Half-writes aren't possible.
+          * Consistent: SQL has strong consistency: Certain parts of the DB are locked when written.
+          * Isolation: Read and write requests are not impacted by other transactions.
+          * Durable: Failure in a given transaction can be recovered.
       * **Weaknesses:**
+        * Slower to write into because SQL uses B-Trees, but quicker to read. SQL uses 4KB pages
+        * Strong Consistency means that it is expensive, and thus higher latency
+        * Mixed Schema Data is not a good fit
     * NoSQL
       * **Basics:**
       * **Strengths:**
       * **Weaknesses:**
+        * Eventual Consistency: your data you query might be stale for a couple of seconds before it is consistent.
 
 3. Scaling
 
@@ -123,6 +133,10 @@ Time: *80 minute read*
 * For instance, you should understand the difference between SQL and NoSQL databases, their broad performance characteristics, and the types of applications each might be useful for (which we’ll teach you later in this guide).
 * URL vs URI
 * Review and Reinforce each of the 12 tech fundamentals
+* DBs
+  * ACID in DBs: dive into more reinforcing details and examples
+  * [B-Trees] (link: https://en.wikipedia.org/wiki/B-tree)
+  * Mixed Schema Data
 
 ## Next Steps
 
