@@ -140,8 +140,13 @@ Three Core Concepts
       * Validated by signing the payload, or encrypting the payload
 
 6. Load Balancers
+    * LBs distribute traffic across machines, and account for failures
+    * Round Robin: Rotate through assignments
+    * Least Connections
+      * Hashing. Based on an arbitraty key, returns a numeric result for each key.
 
 7. Caching
+
 
 8. Message Queues
 
