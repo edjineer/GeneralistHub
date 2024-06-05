@@ -95,16 +95,49 @@ Three Core Concepts
         * Strong Consistency means that it is expensive, and thus higher latency
         * Mixed Schema Data is not a good fit
     * NoSQL
-      * **Basics:**
+      * Four Types:
+        1. **Key Value.** Most popular. Stores data with unique keys, system is opague to contents of the data. Scales by using sharding across nodes.
+        2. **Document Databases:** Like Key-value, but can aggregate searches and store in JSON, XML, YAML.
+        3. **Columnar Databases:** Store info in tables, but allow denormalized data. Indexing by columns, not rows.
+        4. **Graph Databsaes:** Store complicated node and edge relationship, allow for easy traversal and modification.
+      * **Basics:** All 4 types do not need rigid schemas like SQL does. Uses LogStructuredMergeTree instead of B Tree.
       * **Strengths:**
+        * Faster to write, but slower to query.
+        * Managed DBs like DynamoDB or Azure MongoDB include sharding and scaling right out of the box.
       * **Weaknesses:**
         * Eventual Consistency: your data you query might be stale for a couple of seconds before it is consistent.
+        * More limited in efficient queries.
 
 3. Scaling
+    * There are different factors to scale and different approaches
+    * Vertical Scaling: Upgrade existing resources
+      * There is a limit: you can only improve so far
+      * Risk of having a single point of failure
+      * Benefits = Reduce latency since you only have one machine to communicate with, and don't need to rework your architecture
+    * Horizontal Scaling: Get more resources
+      * Communication across multiple computers to store and process information
+      * Database Scaling:
+        * Database sharding: split across into smaller pieces. Would need a hash function to determine a consistent manner to assign a partition to an item
+      * Compute Scaling: Divide content across many parallel jobs to deliver
+    * If asked about scaling in an interview, Ask about the number of users and amount of data that is requred, inform the decision making
 
 4. CAP Theorem
+    * Fundamental Theorem for distributed Design. All about Trade-Offs
+      * System needs to make a choice between the three. It cannot achieve all three, but can have 2 of three
+      * Most Systems do Fault Tolerance, and sacrifice either C or A
+    * Consistency: Every node in a network will have access to the same data. Eventual Consistency = down the line, eventually all users will have same data even after a delay
+    * Availability: The system is always available to the users
+    * Partition tolerance: In case of a fault in the network or communication, the system still works
 
 5. Web Authentication and basic security
+    * Trade off between safety and convenience: Goal of security is to minimize risks while providing functionality.
+    * Authentication: verify identity of users
+      * Hashing, Salting
+      * Session Tokens have expiration dates
+      * Encrypt traffic with https
+    * Authorization: Determine who has permission to view what.
+    * JSON Web Tokens
+      * Validated by signing the payload, or encrypting the payload
 
 6. Load Balancers
 
@@ -124,7 +157,7 @@ Three Core Concepts
 
 Time: *40 minute read*
 
-## Part 4: Watch us design simple systems from scratch, adn learn how to get unstuck
+## Part 4: Watch us design simple systems from scratch, and learn how to get unstuck
 
 Time: *80 minute read*
 
@@ -135,8 +168,12 @@ Time: *80 minute read*
 * Review and Reinforce each of the 12 tech fundamentals
 * DBs
   * ACID in DBs: dive into more reinforcing details and examples
-  * [B-Trees] (link: https://en.wikipedia.org/wiki/B-tree)
+  * [B-Trees] (link: https://en.wikipedia.org/wiki/B-tree) vs LSMT
   * Mixed Schema Data
+  * Sharding with noSQL
+  * Denormalized Data
+* Why is Fault Tolerance more important than consistency and availabiltiy
+* How would I answer a scaling question
 
 ## Next Steps
 
