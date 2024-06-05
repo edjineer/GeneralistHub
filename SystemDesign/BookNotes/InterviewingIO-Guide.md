@@ -146,9 +146,37 @@ Three Core Concepts
       * Hashing. Based on an arbitraty key, returns a numeric result for each key.
 
 7. Caching
-
+    * Storing Expensive computations so that it doesnt have to be computed again.
+    * CDN: Content Delivery Network
+    * Pros:
+      * Reduce latency of an expensive network computation, network call, DB query, or asset fetching
+      * Useful for read-heavy systems like Twitter+YT
+      * Want to store popular in Cache
+    * Cons:
+      * Storage. Usually stored in RAM or disk.
+    * Caching Patterns
+      * 1.Cache Aside Pattern
+        * Only cache what we need after a cache miss has happened.Do not update the DB.
+        * Cons:
+          * Data can become stale if there are lots of updates to the DB. Mitigated by an expiry pattern like TimeToLive
+          * If lots of cache misses, that's a lot of extra work than going straight to the DB.
+      * 2.Write through and Write Back
+        * Data is written to cache and DB (a)synchronously
+    * Client Side Caching
+    * Cache Invalidation (LRU)
 
 8. Message Queues
+    * Fire and Forget = Clients dont expect a response
+    * Message Broker brought in
+    * Advantages:
+      * Queue stores messages, which is resilient to traffic
+      * Hold one at a time for expensive calls instead of in parallel
+      * Deliver msgs to multiple services
+      * Don't need to know server address
+    * Basics
+      * In Async, there are producers and consumers/subscribers
+      * No specific enforced data model
+      * MQs or topics are the link between the producers and consumers
 
 9. Indexing
 
@@ -179,6 +207,8 @@ Time: *80 minute read*
   * Denormalized Data
 * Why is Fault Tolerance more important than consistency and availabiltiy
 * How would I answer a scaling question
+* How exactly are queues resilient to traffic
+* Kafka vs RabbitMQ/AMQP. What is AMQp for rabbit
 
 ## Next Steps
 
