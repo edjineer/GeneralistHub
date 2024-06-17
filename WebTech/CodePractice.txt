@@ -1,0 +1,71 @@
+# Implement Sorting Algorithms 
+
+from copy import deepcopy
+
+# Bubble Sort 
+# Swap adjacent elements if they are in the wrong order 
+# Time complexity = 0(n^2) on average
+def bubbleSort(input):
+    finished = False
+    workingList = deepcopy(input)
+    while not finished: # Or length of array, won't exceed that
+        print(workingList)
+        neededCorrection = False
+        for idx, val in enumerate(workingList):
+            if idx == (len(input) -1):
+                continue
+            if val > workingList[(idx+1)]:
+                temp = workingList[idx]
+                workingList[idx] = workingList[(idx+1)]
+                workingList[(idx+1)] = temp
+                neededCorrection = True
+                print(workingList)
+        if not neededCorrection:
+            finished = True
+    return workingList
+
+# Insertion sort = great if its already sorted 
+# Algo = Start at len 1, then increase and sort as you expand out
+
+
+# Selection sort = Finds smallest item in array. Puts it at the beginning. Repeat. 
+# Find min in sub array
+# O(n^2)
+
+# Merge Sort = Divide and Conquer! 
+# Split into sub arrays, then sort them on the merge 
+# O(nLogN)
+# Doesnt do it in place, takes extra memory
+def mergeSort(input):
+    mid = len(input) / 2
+    if len(input < 2):
+        return input
+    left = input[0:mid]
+    right = input[mid:]
+    return merge(mergeSort(left), mergeSort(right)) 
+
+# QuickSort = Does it in place, uses less memory 
+# Also nlogn
+def quickSort():
+    # Create a pivot 
+    # Partition parts of the array
+    # Swap within the array
+
+# BOGO Sort = Keep shuffling until it gets sorted 
+
+def merge(inputL, inputR):
+    merged = []
+    # while lengths of both is > 0
+    # Pop the larger into the merged array
+    # Return the merged array
+ 
+if __name__ == "__main__": 
+    inputArray = [ [9, 8, 7, 6, 5, 4, 3, 2, 1], 
+    [10, 2, 4, -1], 
+    [], 
+    ["str"] ] 
+    
+    for input in inputArray:
+        assert(bubbleSort(input) == input.sort()) #TODO: Optimization to DP or cache sorted result here
+
+
