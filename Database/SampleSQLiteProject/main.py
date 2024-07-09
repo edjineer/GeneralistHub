@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import sqlite3
 import pdb
 
@@ -34,7 +35,7 @@ if __name__ == "__main__":
 
     print("Connected to Northwind database.")
     # List all tables in the database
-    pdb.set_trace()
+    # pdb.set_trace()
     cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
 
     print("Tables in the database:")

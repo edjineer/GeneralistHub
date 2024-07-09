@@ -21,7 +21,7 @@
   * PRIMARY KEY = ensures uniquness of columns value
   * FOREIGN KEY = maintains referential integrity between two tables
   * NOT NULL = ensure col has a value
-  * UNIQUE = ensures uniwq values in a columns
+  * UNIQUE = ensures unifwq values in a columns
 * Indexes
   * Speed is everything for DB retrievals
 * Aggregates
