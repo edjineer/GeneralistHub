@@ -1,0 +1,3 @@
+[submodule "BestPractices"]
+	path = BestPractices
+	url = https://github.com/edjineer/BookNotes.git
