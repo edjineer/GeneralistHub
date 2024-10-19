@@ -15,6 +15,7 @@ Enrolled in Summer 2024
 * Connection Draining vs Deregistration Delay
 * Replication vs Sharding
 * Deep Dive into DNS
+* CNAME vs Alias
 
 ## 1. Introduction to Developing in Azure
 
@@ -393,7 +394,77 @@ AWS has 200-250ish services, but Route 53 is advanced DNS server
 
 * DNS = Domain Name System
   * Uses hierarchical naming structure
-* 
+  * Translate hostname -> IP Address
+* Key Terms
+  * FQDN = Fully Qualified Domain Name
+  * Domain Register = Amazon Route 53, GoDaddy, etc
+  * DNS Record = A, AAAA, CNAME, NS
+  * Zone File =contains DNS Records
+  * Name Server = Resolves DNS Queries
+  * Top Level Domain (TLD) = .com, .us, .uk
+  * Second Level Domain (SLD) = amazon.com
+
+Amazon Route 53
+
+* Highly available, scalable, fully managed authoritative DNS
+* Authoritative = Customer can update the DNS records
+* Route 53 is a domain registrar
+* 53 is a reference to the traditional dns port
+* Record Types
+  * A = Maps hostname to IPv4 
+  * AAAA = mapshostname to IPv6
+  * CNAME = Maps hostname to another hostname
+  * NS = Name servers for hosted zone, which controls how traffic is routed for a domain
+* Hosted Zones
+  * Container for records to define how to route traffic to a domain and subdomains
+  * Public Hosted Zones = Contains records that specify how to route traffic on the internet(public domain names)
+  * Private Hosted Zones = Records that specify how you route traffic within one or more VPCs (private domain names)
+* TTL (time to live)
+  * High TTL = long, 24 hr
+  * Low TTL = short, 60 sec
+* CNAME vs Alias
+* ALias Record
+  * Maps a hostname to AWS resource
+  * Extends the DNS functionality
+  * Can't set the TTL
+* Routing Policies for Route 53
+  * Define how Route 53 responds to DNS queries
+  * Simple
+    * Route traffic to a single resource
+    * Specify multiple values in the same record
+    * If multiple values returned, random one chosen by the client
+  * Weighted
+    * Control percentage of requests that go to the resource
+    * DNS records must hae saem name and type
+    * Can have health checks
+  * Failover
+    * Active-Passive
+  * Latency Based
+    * Redirect to resource that has least latency close to us
+    * Helpful when latency is a priority
+    * Latency based on traffic between users and AWS regions
+  * Geolocation
+    * Different from latency based
+  * Multi Value Answer
+    * Routing to multiple resources
+    * up to 8 healthy records returned per multi value query
+    * Not a substitute for having an ELB
+  * Geoproximity
+    * Route traffic to resources based on location of users and resources
+    * Uses Route 53 Traffic Flow
+    * Eample = East vs west US
+    * Can be added in bias
+* Health Checks
+  * HTTP Health checks only for publix respirces
+  * Automated DNS failover = health check
+  * Integrated with CW (CloudWatch) metrics
+  * Used to monitor an endpoint
+  * Can combine health checks
+  * Private Hosted Zones
+* Traffic Flow
+  * Simplify process of create and maintain records in complex cinfigurations
+* Domain Registrar vs DNS 
+  * Example: GoDaddy as a Registrar, and Route53 as a DNS Service
 
 ### VPC Primer
 
