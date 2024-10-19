@@ -311,6 +311,23 @@ Connection Draining(CLB) / Deregistration Delay(ALB and NLB)
 
 ### Auto Scaling Groups
 
+ASG = Auto Scaling Groups
+
+* Goals
+  * Scale out (add EC2 instances) to match increased load
+  * Scale in (remove EC2 instances) to match decreased load
+  * Ensure we have max and min number of machines running
+  * Automatically register new instances to a load balancer
+* Load balancer adds or removes automatically
+* ASGs have following attributes
+  * Launch configuration with AMI specifying EC2 user data, EBS volumes, security groups, ssh key pairs
+
+Auto Scaling Alarm
+
+* Scale an ASG based on CloudWatch Alarms
+* Look out for a specific metric
+* Alarm trigger results in scale out or scale in
+
 ## 4. RDS, Aurora, and Elasticache
 
 ### Relational Database Service
@@ -321,9 +338,17 @@ Connection Draining(CLB) / Deregistration Delay(ALB and NLB)
 
 ## 5. DNS and VPCs
 
+### Route 53
+
+### VPC Primer
+
 ## 6. Tier 3 Architecture
 
 ## 7. Amazon Simple Storage Service
+
+### Amazon S3
+
+### Cross Origin Resource Sharing
 
 ## 8. AWS Development
 
