@@ -13,6 +13,8 @@ Enrolled in Summer 2024
 * SSD vs HDD
 * Layers (Layer 3 = network, TCP = Layer 4, HTTP=Layer 7)
 * Connection Draining vs Deregistration Delay
+* Replication vs Sharding
+* Deep Dive into DNS
 
 ## 1. Introduction to Developing in Azure
 
@@ -325,20 +327,73 @@ ASG = Auto Scaling Groups
 Auto Scaling Alarm
 
 * Scale an ASG based on CloudWatch Alarms
-* Look out for a specific metric
+* Look out for a specific metric. Can set custom metrics
 * Alarm trigger results in scale out or scale in
+* Must give a Launch Template and Launch Configuration
+* Can schedule scaling up too
+* Predictive Scaling or Dynamic Scaling
+* Cooldown period applied after a scaling event
 
 ## 4. RDS, Aurora, and Elasticache
 
 ### Relational Database Service
 
+RDS = Relational Database service
+
+* Uses SQL
+* Managed, automated provisioning, monitoring dashboard
+* Database Backup
+  * AWS Backup automated
+* Dynamic Scaling for RDS
+  * Set Max
+  * If 10% space left, then it can scale my default
+* Read Replica
+  * Read-Only Replica, up to 5 of them
+  * Increases Throughput
+* Multi AZ (for Disaster Recovery)
+* Can switch from single AZ to multi AZ
+* RDS Security
+  * At Rest Encyption (Transparent Data Encryption)
+  * In flight encryption (use certs)
+  * Encryption operations
+    * Can encrypt while making a snapshot
+  * Network Security
+    * Leverages security groupsm controls which ip can communicate with RDS
+  * Access Management
+    * IAM policies control who manages RDS
+    * Plus = SSL Encryption
+
 ### Aurora
 
+Amazon Aurora = MySql and Postgres, Amazon-built specifically
+
+* High availability, costs more than normal RDS
+* Backup and recovery
+* Push button scaling, zero downtime, security
+* Can backtrack
+
 ### Elasticache
+
+AWS Elasticache
+
+* Manages Redis and Memcached
+* Replication vs sharding
+* Redis = multi az with auto failover
+* Memcached = multi node partition of data, sharding
+* Cluster, Cluster mode enabled
+* Lazy Load, cache aside, lazy population
+* Write through
+* Cache Eviction and TimeToLive TTL
 
 ## 5. DNS and VPCs
 
 ### Route 53
+
+AWS has 200-250ish services, but Route 53 is advanced DNS server
+
+* DNS = Domain Name System
+  * Uses hierarchical naming structure
+* 
 
 ### VPC Primer
 
@@ -371,3 +426,9 @@ Auto Scaling Alarm
 ## 17. Additional Security
 
 ## 18. Additional AWS Services
+
+* AWS SES = Simple Email Service
+* DB Summary, lots of options (Dynamo, Neptune, Redshift)
+* AWS Certificate Manager
+* AWS Cloud Map (map of backend)
+* AWS Fault injection Simulator
