@@ -148,7 +148,12 @@ EC2 Instance Types: https://aws.amazon.com/ec2/instance-types/
   * 80 HTTP
   * 3389 Remote Desktop Protocol
 * Linux/Mac Example
-
+* Payments:
+  * On-Demand, or reserved, or spot instances, or dedicated hosts
+  * Dedicated Hosts and server
+  * Physical services available
+  * Some companies will ramp up resources over the holiday season
+* Demo - Purchasing a reserve
 
 ### EC2 Instance Storage Section
 
