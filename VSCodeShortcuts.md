@@ -20,6 +20,7 @@ ctrl+alt+up/down = multiple cursors (exit is just click somewhere else)
 ctrl+d = search for instance of same word, edit it and create multiple cursors
 f12 = go to definition if language supports it
 ctrl+shift+o = Jump to specific seciton
+ctrl+b = side panel
 
 ## Non-vS Code Shortcuts
 

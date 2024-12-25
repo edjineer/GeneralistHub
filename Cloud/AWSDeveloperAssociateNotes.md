@@ -3,7 +3,9 @@
 By Fasal Kahn, hosted through Stormwind Studios
 Enrolled in Summer 2024
 
-## Running Questions
+## Running Notes
+
+### Questions/Look Up Later
 
 * SQS
 * Difference between Data Centers and availability zone
@@ -16,6 +18,15 @@ Enrolled in Summer 2024
 * Replication vs Sharding
 * Deep Dive into DNS
 * CNAME vs Alias
+* NSlookup.io
+* VPC: Subnets, internet gateways, NAT gateways, security groups, network ACL, vpc flow logs, VPC Peering, VPC endpoints, site to site vpn
+* Routing Table
+
+### Practice Ideas
+
+* Label FQDN:  Protocol, domain name, sub domain, SLD, TLD, root
+* Route 53 Lab
+
 
 ## 1. Introduction to Developing in Azure
 
@@ -406,12 +417,17 @@ AWS has 200-250ish services, but Route 53 is advanced DNS server
 
 Amazon Route 53
 
+* Pros that set it apart from other DNS servers
+  * Routing policy customization
+  * Built in health checks 
+  * Offers support for advanced DNS record types 
 * Highly available, scalable, fully managed authoritative DNS
 * Authoritative = Customer can update the DNS records
-* Route 53 is a domain registrar
+* Route 53 is a domain registrar, is a DNS server
+  * DNS Server translates hostname to IP address
 * 53 is a reference to the traditional dns port
 * Record Types
-  * A = Maps hostname to IPv4 
+  * A = Maps hostname to IPv4
   * AAAA = mapshostname to IPv6
   * CNAME = Maps hostname to another hostname
   * NS = Name servers for hosted zone, which controls how traffic is routed for a domain
@@ -463,12 +479,25 @@ Amazon Route 53
   * Private Hosted Zones
 * Traffic Flow
   * Simplify process of create and maintain records in complex cinfigurations
-* Domain Registrar vs DNS 
+* Domain Registrar vs DNS
   * Example: GoDaddy as a Registrar, and Route53 as a DNS Service
 
 ### VPC Primer
 
+* VPC = Virtual Private Cloud
+  * Build your own local area network
+  * Can include public or private subnets
+  * Routing Table
+  * Network ACL = Firewall that controls traffic to and from subnet. Different from Security Group. Gives internet to private subnets
+  * Security groups = stateful, operate at EC2 instance
+  * VCL Flow Log = like wireshark, captured data
+  * VPC Endpoint
+  * VPC Peering=connect 2 vpc with non overlapping ip ranges
+
 ## 6. Tier 3 Architecture
+
+* T1 Public Subnet, T2 Private Subnet, T3 Data Subnet(RDS, Caches)
+* Wordpress example
 
 ## 7. Amazon Simple Storage Service
 
@@ -478,23 +507,81 @@ Amazon Route 53
 
 ## 8. AWS Development
 
+### Developing on AWS
+
+### Development with Simple Storage Service
+
 ## 9. Cloudfront, Beanstalk, and Docker Development
+
+### Cloudfront
+
+### Elastic Beanstalk
+
+### AWS EC5 Essentials
 
 ## 10. CICD
 
+### AWS CICD
+
+### AWS CodeBuild
+
+### AWS Code Deploy
+
+### Other AWS CICD Services
+
 ## 11. Managing your Infrastructure ad Code
+
+### CLoudFormation
+
+### Cloudformation Functions
 
 ## 12. AWS Monitoring, Troubleshooting, and Audit
 
+### Cloudwatch
+
+### AWS X-ray
+
+### AWS Cloudtrail
+
 ## 13. AWS Integration and Messaging
+
+### Amazon Simple Queue Service
+
+### Amazon Simple Notification Service
+
+### Kinesis
 
 ## 14. Lambda and DynamoDB
 
+### Intro to AWS Lambda
+
+### Even more lambda
+
+### DynamoDB Basics
+
+### Working with DynamoDB
+
 ## 15. API Gateway
+
+### API Gateway Basics 
+
+### API Tuning
 
 ## 16. Working with Serverless Application Model (SAM)
 
+### Serverless Application Model
+
+### AWS Cloud Development Kit
+
+### Amazon Cognito
+
+### Other Serverless Features
+
 ## 17. Additional Security
+
+### Advanced Integrity Management
+
+### AWS Security and encryption
 
 ## 18. Additional AWS Services
 
