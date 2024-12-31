@@ -26,6 +26,7 @@ Enrolled in Summer 2024
 
 * Label FQDN:  Protocol, domain name, sub domain, SLD, TLD, root
 * Route 53 Lab
+* S3 Encryption methods
 
 
 ## 1. Introduction to Developing in Azure
@@ -503,11 +504,43 @@ Amazon Route 53
 
 ### Amazon S3
 
-### Cross Origin Resource Sharing
+* Storage of objects (like dropbox)
+* Bucket - directory. Needs to be globally unique
+* Every file has a key, is used in the path
+* Max Size is 5TB
+* Can enable versioning
+* Encryption
+  * 4 types of encryption
+    * Server Side Encryption (SSE-C, SSE-S)
+    * Client Side Encryption
+    * Key management service (SSE-KMS)
+  * Encryption in Transit for SSL and TLS
+* Security: IAM is an options
+* Networking, logging and auditing, presigned urls
+* Can use S3 bucket to host URL
+
+### Cross Origin Resource Sharing (CORS)
+
+* CORS basics
+  * Origin = Scheme, host, and port
+  * CORS headers: access-control-allow-origin
+  * Good Diagram in Notes
+* Consistency Model: Strong consistency, no performance impact or additional cost
 
 ## 8. AWS Development
 
 ### Developing on AWS
+
+AWS CLI
+
+* Simulate the commands with a dry run flag
+* sts decode-authorization-message = info for parsing error messages
+* AWS EC2 Instance Metadata
+  * Example: add /meta0data/placement/availability-zone to get availability zone info
+
+Note: Left off at 8:18
+
+
 
 ### Development with Simple Storage Service
 
@@ -563,7 +596,7 @@ Amazon Route 53
 
 ## 15. API Gateway
 
-### API Gateway Basics 
+### API Gateway Basics
 
 ### API Tuning
 

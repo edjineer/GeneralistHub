@@ -21,6 +21,8 @@ ctrl+d = search for instance of same word, edit it and create multiple cursors
 f12 = go to definition if language supports it
 ctrl+shift+o = Jump to specific seciton
 ctrl+b = side panel
+shift+alt up/down = copy line  
+ctrl+L 
 
 ## Non-vS Code Shortcuts
 
