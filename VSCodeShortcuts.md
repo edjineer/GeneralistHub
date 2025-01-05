@@ -13,7 +13,8 @@ ctrl+shift+k = delete line
 ctrl+tab = swtich to other open tab
 ctrl + p = starts typing file name
 alt  left or right arrows = switch to text of other split panel
-ctrl + enter = starts typing at new line
+ctrl + enter = starts typing at new line below
+ctr+shift+enter = new line above
 ctrl+n = create new file (idk where)
 alt+shift+downor up =  duplicate line
 ctrl+alt+up/down = multiple cursors (exit is just click somewhere else)
@@ -22,7 +23,7 @@ f12 = go to definition if language supports it
 ctrl+shift+o = Jump to specific seciton
 ctrl+b = side panel
 shift+alt up/down = copy line  
-ctrl+L 
+ctrl+L = highlight line
 
 ## Non-vS Code Shortcuts
 
