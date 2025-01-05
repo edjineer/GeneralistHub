@@ -5,6 +5,7 @@ Publication Year: 2006
 
 ## Look Up Later
 
+* Sam's Teach yourself regular expressions in 10 minutes by Ben Forta
 * KDE
 * "Bourn again shell" where did that come from
 * lsof command
@@ -15,6 +16,7 @@ Publication Year: 2006
 * Firmer tutorial on environment variables
 * Origin of Man Page categories, the evolution of the man pages. Games?
 * Man vs info
+* IO Streams and file descriptors
 
 ## Introduction
 
@@ -140,8 +142,35 @@ Publication Year: 2006
   * d for directory node
   * m for menu
   * i to search for titles, s to search for content
+* Finding locations or details of files
+  * whereis: flags are -b for only binaries, -s for only sources, -m for manpages
+  * whatis: gets descriptions of commands. Can use -w flag for wildcards: whatis -w ls*
+    * Can use regular expressions if you also use -r flag
+  * apropos: find command based on what it does
+  * which: find which version of a command will run
 
 ### Building Blocks
+
+* Run Several Commands Sequentially with ;
+  * Semi colon will run all commands, even if previous ones failed
+  * Called Command stacking
+  * Executes in sequential order, and waits on termination before proceeding
+  * Wait using: "sleep"
+  * Run commands only if the last one succeeded: &&
+  * Run a command only if the previous one fails: ||
+* Plug the output of one command into another command: $()
+  * Called Command Substitution
+* Input/Output Streams
+  * 3 Streams: standardin, standard out, and standard error
+  * Each has a file descriptor (0), (1), (2)
+  * Using output of one command as input for next: |
+    * Redirects Stdout to become stdin for the next command
+    * Example: ls | grep myThing
+  * Redirect Command output to a file:  >
+    * Prevent rewriting over a file with > by doing: set -o noclobber (turn off with set +o noclobber)
+    * And if you want to rewrite anyway after that, do it with >|
+  * Append content to a file: >>
+  * Use file as input to a command: <
 
 ## Part 2: Working With Files
 
