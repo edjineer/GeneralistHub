@@ -17,6 +17,9 @@ Publication Year: 2006
 * Origin of Man Page categories, the evolution of the man pages. Games?
 * Man vs info
 * IO Streams and file descriptors
+* "Dog" as a text editor alternative to "Cat"
+* Access control lists: the latest on this. Overlap with Cloud computing course? "An ACL Gui for Linux" recommended here
+* Sticky bit and permissions on older linux systems
 
 ## Introduction
 
@@ -176,9 +179,56 @@ Publication Year: 2006
 
 ### Viewing Files
 
+* Cat to view contents of a file in stdout
+  * Can use "less" to view it one bit at a time
+    * Can use -N flag to add numbers to less
+    * Switch from less to vim by pressing v
+    * Set editor to vim with "export EDITOR=vim"
+  * Can also concatonate 2 files together to stdout: cat file1 file2
+  * Save to a file: cat file1 file2 > file3
+  * Cannot have output file also be input file
+  * Can number the lines in the output with -n flag: cat -n
+  * Concatenate and print files in reverse: tac
+* View first 10 lines in stdout: head
+  * Can view multiple files at once: head file1 file2
+  * Can set specific number of lines to show: head -n 3 file1 file2
+  * Can see the first X bytes of a file too: head -c
+* View Last 10 lines of a file: tail
+  * -n flag to specify number of lines to show
+  * Can include several files
+  * Tail is great for constantly updated files: tail -f --pid=PID
+
 ### Printing and Managing Print Jobs
 
+* lpstat = line printer stat
+* lpr = print files to default printer
+* lpr -P = specify which printer to print to
+* lpq = list print jobs
+* lprm = cancel current print job
+* lprm - = cancel all print jobs
+
 ### Ownerships and Permissions
+
+* Change Group owning file or directories: chgrp
+  * By default, you are the file owner and group for any file you make
+  * Syntax: chgrp groupName file. Can also use group's id
+  * Find group id from /etc/group
+  * You can only change group if you are a member of that group
+  * Use chgrp -R to change permissions on a dir recursively
+  * Use the -v flag for chgrp to see what it is doing
+    * -v will report on stuff that did and did not need any changes
+  * -c can be used just to get info on the changes
+* Change owner of file or directories: chown
+  * Find a user's id by checking in /etc/passwd
+    * First val = user's id, second val is the main group associated with the user
+  * chown can change both user and group at once: chown user:group file
+  * chown can change group: chown :group file. There' literally no reason to use chgrp since chown does it all
+* Linux Permissions
+  * Access Control Lists (ACLs)
+  * Abbreviations for Users: u=users, g=group, o=others/everyone else
+  * Abbreviations for Permissions: r=read, w=write, x=executable
+* Changing ownership: chmod
+  * 
 
 ### Archiving and Compression
 
@@ -196,7 +246,7 @@ Publication Year: 2006
 
 ### Installing Software
 
-## Part 4: Networking
+## Part 5: Networking
 
 ### Connectivity
 
