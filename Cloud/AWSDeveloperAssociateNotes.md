@@ -533,34 +533,177 @@ Amazon Route 53
 
 AWS CLI
 
-* Simulate the commands with a dry run flag
+* Simulate the commands with a dry run flag: --dry-run
 * sts decode-authorization-message = info for parsing error messages
 * AWS EC2 Instance Metadata
-  * Example: add /meta0data/placement/availability-zone to get availability zone info
-
-Note: Left off at 8:18
-
-
+  * Example: add latest/meta-data/placement/availability-zone to get availability zone info
+* MFA with CLI
+  * Must run STS GetSessionToken API Call
+* AWS SDK Software developer kit
+  * Example: DynamoDB
+  * Be aware of API rate limits and Service Quotas
+  * May need to increase limits
+  * Exponential Backoff: Retry mechanism to deal with throttling exceptions
+* Credentials for CLI
+  * Prfile, EnvVars
+  * ~/.aws/credentials
 
 ### Development with Simple Storage Service
+
+MFA Delete
+* Force user to generate a cde before deleting
+* MFA = multi factor authentication
+* Bucket Policies bs Default encryption
+Access Logs
+* Don't set your logging bucket to your monitoring bucket
+S3 Replication
+Pre-Signed URLs
+* Allows expiring URLS
+S3 Storage Class Options
+* General Purpose
+* S3 OneZone-Infrequent Access(IA)
+* Intelligent Tiering
+* Amazon Glacier: good for archiving and backup
+  * Normal, and Glacier Deep Archive
+Moving between storage classes
+* Can transition
+Lifecycle rules
+* Transition actions
+* Expiration actions
+Baseline perfmance
+* Use Multi-part solutions for uploads
+* Can optimize byte range
+* Select and glacier select
+* Event notification
+KMS Limitation
+Amazon Athena
+* Serverless query service
+* Use SQL Language to query the files
+
 
 ## 9. Cloudfront, Beanstalk, and Docker Development
 
 ### Cloudfront
 
+* General
+  * Improves CDN read performance
+  * Content is cached at the edge
+  * Helps prevent DOS attacks
+* Origins
+* Gets from cache, or from the origin depending on availability
+* Geo restrictions
+  * Country whitelists or blacklists
+  * Cloudfront = global edge network
+* Caching
+  * Based on headers, session cookies, query string parameters
+  * Signed URL or signed cookies
+* Signed urls
+  * Either from Cloudfront, or S3 pre-signed URL
+* Price Classes
+* Field Level Encryption
+
 ### Elastic Beanstalk
 
+* Deploy Web app 3-tier
+* Management infrastrucutre to deploy app on AWS
+* Handled load balancing, scaling, etc
+* Components
+  * Supported platforms listed
+  * Web server vs worker tier
+* Deployment Models
+  * Deployment all at once
+  * Rolling
+  * Rolling with additional batch
+  * Immutable
+* Load Balancing
+  * Traffic Splitting
+* Overall
+  * USeful for zero downtime updates
+  * Plenty of CLI for interacting with it
+  * Lifecycle policy (max number of versions = 1000)
+  * Extensions: format is yaml or json
+  * RDS available, with some Decoupled options too
+  * Multi Docker
+  * Can use HTTPS too
+  * Can do custom platform if you want
+
 ### AWS EC5 Essentials
+
+* ECS Clusters 
+  * Essentially Docker
+  * Run code in nearly any OS
+  * Docker images are stored in docker repositories
+  * Private= ECR Repos
+* Docker vs VMs
+* Docker Container Management
+  * Three choices: ECS (Amazon's platforms), Fargate: Amazon's serverless platform, and EKS: Amazon's kubernetes/open source
+* ECS Clusters
+  * Groupings of EC2 Instances
+  * Run on the ECS Agent (docker container)
+  * Task Definitions: JSON form to tell how to run a docker container
+  * ECS Service says how many tasks run
+  * ECS Service with a load balancer, can support dynamic port forwarding
+  * ECR = private docker image repository, access controlled through IAM
+  * AWS Login command CLI 1(exam quesiton): $(aws ecr get-login --no-include-email --region eu-west-1)
+  * AWS Login v2: aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stin
+* Fargate
+  * Serverless, don't need to provision any EC2 instances
+  * Needs Instance profile, and task role
+  * Taks placement: Must determine where to place it, constraints of CPU, memory
+  * Strategies for Task placement
+    * Binpack, random, spread, mix and match
+  * Can auto-scale using cloudwatch or cloud alarm
+  * Cluster Capcity Provider
+  * ECS Data Volumes
+* EKS
+* ECS Classic 
+  * NEeds EC2 instances
+  * Configure security groups
 
 ## 10. CICD
 
 ### AWS CICD
 
+Code integrations and Code Deployment
+
+* Take your code, automatically build and test before putting in main
+* Delivery = bring into the main branch
+* Technology Stack
+  * CodeCommit=Stores the Code. Exapmples= AWS Code Commit, Github, Bitbuckey
+  * CodeBuild=Build and test the code= AWS Code Build, Jenkins
+  * CodeDeploy=Deploy and provision the code: AWS Code Deploy, Elastic Beanstalk, etc
+  * Can coordinate with AWS Code Pipeline
+    * ARtifacts generated after every step, serve as inputs for every next step
+
 ### AWS CodeBuild
+
+* Like Jenkins, TeamCity
+* Charges by minute, uses docker under the hood
+* Specify the source, make buildspec.yml for building it, typically stored with the code at root
+* Lots of supported envs (java, ruby, etc)
+* Can run in VPC
 
 ### AWS Code Deploy
 
+* Deploys code to many EC2 instances
+* EC2 instances are not necessarily managed by Elastic Beanstalk
+* Handling deployments with open souce tools like Terraform, Ansible, Chef, Puppet
+* Steps
+  * Polling CodeDeploy constantly
+  * appspec.yaml
+  * Hooks order
+  * Can be configured one at a time, or more
+  * Redeploy or rollback
+
 ### Other AWS CICD Services
+
+* CodeStar
+  * Create CICD ready projects
+* CodeArtifact
+  * Storing and retrieving dependencies
+* CodeGuru
+  * Automated Code review
+  * Code profiler: behavior, memory leak
 
 ## 11. Managing your Infrastructure ad Code
 
