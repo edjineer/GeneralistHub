@@ -707,9 +707,43 @@ Code integrations and Code Deployment
 
 ## 11. Managing your Infrastructure ad Code
 
-### CLoudFormation
+### CloudFormation
+
+* Infrastructure as Code
+  * Build as template
+  * Declarative way to outline resources and details
+  * Benefits: nothing is manual, version controlled, code reviews for changes
+    * Can destroy on the fly
+    * Separation of concern
+    * Don't reinvent the wheel
+  * Cost: Can estimate the cost
+* Cloudformation template
+  * Resources
+    * Limitation: Cannot be dynamic
+  * Parameters
+    * Pseudo parameters AWS:Region
+  * Mappings (Access a static value)
+  * Outputs
+  * Cross Stack Reference
+  * Conditions
 
 ### Cloudformation Functions
+
+* Intrinsic functions
+  * Fn::Ref: Reference function
+  * Fn::GetAtt: Get attribute
+  * Fn::FindInMap: access map values
+  * Fn::ImportValue: grab from other templates
+  * Fn::Join
+  * Fn:Sub
+* Condition Functions
+* Cloud Formation Rollbacks
+* Changesets
+* Nested Stacks
+* Cross Stacks
+  * Helpful for re-using
+* Stack Sets
+* Cloud Formation Drift
 
 ## 12. AWS Monitoring, Troubleshooting, and Audit
 
