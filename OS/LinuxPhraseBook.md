@@ -20,6 +20,16 @@ Publication Year: 2006
 * "Dog" as a text editor alternative to "Cat"
 * Access control lists: the latest on this. Overlap with Cloud computing course? "An ACL Gui for Linux" recommended here
 * Sticky bit and permissions on older linux systems
+* Permissions as 000
+* suid for exes, sgids
+* History of the Sticky Bit, and how it actually works in the /tmp dir
+* Linux Magazine article comparing different compression mechanisms
+* Why does zip -P passwd even exist?
+* Explore more consequences of -t for zip
+* Linux Trivia
+* List Difference between tar and zip (tricky = zip 0)
+* History of tar, and its flag combinations. Revisit how the zvcf works
+
 
 ## Introduction
 
@@ -227,10 +237,72 @@ Publication Year: 2006
   * Access Control Lists (ACLs)
   * Abbreviations for Users: u=users, g=group, o=others/everyone else
   * Abbreviations for Permissions: r=read, w=write, x=executable
-* Changing ownership: chmod
-  * 
+* Changing ownership: chmod [ugo][+-=][rwx]
+  * chmod has numeric and alphabetic options for changing permissions
+  * To remove all permissions from a thing, chmod o= file.txt
+  * Numeric: chmod[0-7][0-7][0-7]
+    * Binary represents the permissions
+    * 400 = owner can read, nothing else allowed (100 u 000 g 000 o)
+    * 644 = owner and group can read, owner can write and execute (110 100 100)
+    * 777 = all read write and execute
+    * 000 = no one can do anything, except root
+  * Change Permissions recursively -R flag
+  * chmod u[+-]sSUID = only a property for executables
+    * In ls -l, you may see "s" instead of x in permissions
+  * chmod g[+-=]s  GUID = 
+  * Sticky Bit: chmod [+-]t
+    * Old OS Days: sticky bit indicated that the exe would be used constantly, so keep it in swap space
+    * Modern: OS ignores sticky bit on files
+    * Uses it on dirs though
+    * Example: /tmp directory
+    * Useful on a server, not super useful on a single workstation
 
 ### Archiving and Compression
+
+* There is a difference between archive and Compression
+  * Archive = Take 10 files, combine them into 1, size is the same
+  * Compress = Affets the resulting size. Usually smaller, but could be bigger
+    * If you compress a compressed file, then it adds extra overhead and makes it bigger
+    * Zip is most common compression format. Zip can also achive
+    * gzip is a replacement for Unix "compress"
+    * bzip2 is newer, meant to replace gzip. Creates smaller files, but works slower
+* Archive and Compress with Zip
+  * Example: zip [name of dest] [list of files]
+  * When here are lost of files, better to zip a dir: zip [name of zipped file][dir name]
+  * Adjust level of Compression: zip [0-9], where 0 is no compression at all, 1 is compress quickly. Default is 6
+    * Can use -9 all the time. Can do this in .bashrc file: "alias zip=zip -9"
+  * Password Protect zip archives: -P(never use), or -e
+    * -P is trash, it shows your passwd in plain text on command line history. zip -P 1234 new.zip file.txt
+    * -e encrypts the zip and uses a passwd
+  * Unzip
+    * Can add -v verbose flag
+    * List files in zip without unzipping it
+    * Test an unzip in case it is corrupted: unzip -t
+      * Should use -t for every unzip
+* Gzip
+  * Difference between zip and gzip: zip leaves the original files behind, gzip replaces it
+  * You can get the zipped output and leave the OG behind with: zip -c myZip.txt < file.gz
+  * gzip does not work recursively by default, need to use -r for a dir
+  * Can use levels 0-9 for adjusting compression too, default is 6
+  * Unzip with gunzip: replaces original gzip file unless you use gunzip -c thing.gz > file.txt
+    * Instead of gunzip, you could also use "gzip -d" for decompress
+  * Can test with -t
+* Bzip2
+  * Very similar behavior to gzip. Replaces original files, has similar flags
+  * Bunzip2 or bzip2 -d to unzip
+* Archive files with tar -cf
+  * tar does not compress, it only archives
+  * Create flag: -c
+  * File flag: -f
+  * Size of the tarball will be the sum of the file sizes, plus a bit for overhead
+  * Tar leaves the original files behind (like zip)
+* Archive and Compress with tar -zcvf
+  * verbose, gzip, create, files
+  * Test untar with tar -zvtf
+    * -f needs to be last because you specify the name of the tar.gz file
+* Untar and uncompress tar -zxcf
+  * x = extract
+  * If untaring a bzip, then -jxvf
 
 ## Part 3: Finding Stuff
 
