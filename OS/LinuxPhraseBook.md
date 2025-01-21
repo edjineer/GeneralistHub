@@ -6,6 +6,9 @@ Publication Year: 2006
 ## Look Up Later
 
 * Sam's Teach yourself regular expressions in 10 minutes by Ben Forta
+  * what is a regular expressin by docs.kde
+  * Regular expressions explained by castiglia
+  * Wildcardsgone wrong by linux-mag
 * KDE
 * "Bourn again shell" where did that come from
 * lsof command
@@ -29,7 +32,10 @@ Publication Year: 2006
 * Linux Trivia
 * List Difference between tar and zip (tricky = zip 0)
 * History of tar, and its flag combinations. Revisit how the zvcf works
-
+* Why did i have to manually install locate, and why did its installation take so long?
+* Time command to figure out how long something takes
+* Play around with grep -A, -B, -C for contexts
+* 
 
 ## Introduction
 
@@ -307,6 +313,28 @@ Publication Year: 2006
 ## Part 3: Finding Stuff
 
 ### Finding Stuff: easy
+
+* locate
+  * Searches DB of filenames and dirs
+  * slocate = secure locate, probably symlinked with locate
+  * Search while ignoring case: locate -i
+  * Show first n results: locate -n 25 keyword
+  * locate updates its DB regularly, but will miss recently added files. Run updatedb to update the db for locate to search in
+* grep
+  * Grep has several versions
+    * grep for basic regular expressions
+    * egrep for extended regular expressions
+    * fgrep for fixed strings. Allows multiple search terms
+    * grep -P for perl regular expressions
+  * Big difference between sinlge (good) quotes and double for regex. Double quotes means you're using shell vars
+  * Search recursively = grep -R, which follows symlinks
+  * Ignore case: grep -i
+  * Search for whole words only: grep -w
+  * Show line numbers: grep -n
+  * Search output of other commands: ls -l | grep thing
+  * Search with context: -A = after context, -B= before context, -C= both contexts
+  * Show lines where word does not appear: grep -v
+  * Get List of results: grep -l
 
 ### The Find command
 

@@ -24,6 +24,7 @@ ctrl+shift+o = Jump to specific seciton
 ctrl+b = side panel
 shift+alt up/down = copy line  
 ctrl+L = highlight line
+ctrl+1, ctrl+2 = switch between window panes in VSCode
 
 ## Non-vS Code Shortcuts
 
