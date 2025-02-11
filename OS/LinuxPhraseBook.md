@@ -338,11 +338,63 @@ Publication Year: 2006
 
 ### The Find command
 
+* Find
+  * grep looks in files, locate looks based on a DB, and find looks live
+  * find -name
+    * Automatically recursive
+    * Looks for exact matches, so you need wildcards and quotes
+  * find -print; on by default
+  * find -user: find files by ownership
+    * To find files not owned by someone: find ! -user scott
+  * find -group
+  * find -size +10M
+    * Default is bytes, so specify your units
+    * b=blocks of bytes (default), c=bytes, k=kilobytes, M=Megabytes, G=gigabytes
+    * Default searches for exact match; add + or - for more/less than given size
+  * find -type
+    * f=file, d=dir, l=symlink, b=block,c=char,p=fifo, s=socket
+  * find -a; show results if expressions are true, AND
+    * Combine multiple flags together: find -name *myFile* -a -type f
+  * find -o; show results if either condition is true
+  * find -exec: execute a command on every found file
+  * find -fprint; print find results to a file
+* Count results with: wc -l
+
 ## Part 4: Your Environment
 
 ### Your Shell
 
+* History
+  * .bash_history file is present in home dir, holds last 500 lines
+  * !! = run last command again, referencing history file
+  * ![##] = Run previous command using numbers
+    * Uses line num from history file
+  * ![string]
+    * Runs most recent run matching chars from command
+* Alias
+  * Stored in .bash_rc or .bash_aliases
+  * "alias" shows all aliases for machine
+  * Create new temporary alias: alias newterm='[command]'
+  * Make it permanent by adding it to the bashrc/bashalias, and then reloas with " . .bash_alias"
+  * Remove an alias: unalias, works temporary unless you modify the bashrc
+
 ### Monitoring System Resources
+
+* ps = Snapshot of current processes
+  * ps aux; a=all users, u=user oriented, x= without conrtolling terminal screens
+  * STAT column: R=running, S=sleping, T=stopped, Z=zombie
+  * View process tree: ps axjf
+    * Shows which processes have spawned others
+    * Shows parent id
+  * View processes owned by a specific user: ps U [username]
+  * End a running process: kill [PID]
+    * Can modify the timing and intensity of the kill
+    * -15 = terminate gracefully, default
+    * -9 = die now
+    * -1 = shut down
+* top = Dynamic list of running processes
+  * can kill a program from top: press k, then enter the pid
+ * lsof = List open files
 
 ### Installing Software
 

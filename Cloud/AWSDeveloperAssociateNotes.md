@@ -705,7 +705,7 @@ Code integrations and Code Deployment
   * Automated Code review
   * Code profiler: behavior, memory leak
 
-## 11. Managing your Infrastructure ad Code
+## 11. Managing your Infrastructure and Code
 
 ### CloudFormation
 
