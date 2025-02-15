@@ -35,7 +35,12 @@ Publication Year: 2006
 * Why did i have to manually install locate, and why did its installation take so long?
 * Time command to figure out how long something takes
 * Play around with grep -A, -B, -C for contexts
-* 
+* Gentoo Wiki: Linux Memory Management
+* tmpfs as a storage space, history
+* Distrowatch's Linux distributions facts and figures
+* apt vs apt-get vs dpkg
+* Linux magazine: a very apropos apt
+* sshfs
 
 ## Introduction
 
@@ -381,7 +386,7 @@ Publication Year: 2006
 ### Monitoring System Resources
 
 * ps = Snapshot of current processes
-  * ps aux; a=all users, u=user oriented, x= without conrtolling terminal screens
+  * ps aux; a=all users, u=user oriented, x= without controlling terminal screens
   * STAT column: R=running, S=sleping, T=stopped, Z=zombie
   * View process tree: ps axjf
     * Shows which processes have spawned others
@@ -394,9 +399,48 @@ Publication Year: 2006
     * -1 = shut down
 * top = Dynamic list of running processes
   * can kill a program from top: press k, then enter the pid
- * lsof = List open files
+* lsof = List open files
+  * Thousands of results
+  * lsof -u = Files from a particular user
+  * lsof [file] = See who is using a specific file
+  * lsof -c = list processes for a specific program
+* free = show memory
+  * -k is default, kilobytes
+  * -b id bytes
+  * -m is megabytes
+* df = File system disk usage
+  * -h for human readable
+  * tmpfs
+* du = File space used by a directory
+  * cd into dir, then run du
+  * Last line gives overall total
+  * -s flag for the total space
 
 ### Installing Software
+
+* Intro
+  * Deb (ububtu) and RPM (red hat) packages dominate the SW world
+* RPM
+  * rpm -ihv or -Uhv [package]
+  * -e for remove
+  * yum install for distributions
+  * apt handles this for debian
+* Debian
+  * dpkg -i = install
+  * apt is like a wrapper around dpkg
+  * dpkg -r [package] = remove
+  * apt-get install [package]
+    * apt handles dependency installation
+  * apt-get update
+    * looks to apt servers, found at /etc/apt/sources.list
+  * apt-get remove
+  * apt-get --purge remove [pkg], removes configuration files too
+  * apt-get upgrade = runs upgrade for packages, use with caution
+  * apt-cache search = lists pkgs available
+  * apt-get clean
+    * deb files are left in /var/cache/apt/archives after install
+    * takes up space, so this cleans it
+  * apt-get -f install = fix broken dependencies
 
 ## Part 5: Networking
 
