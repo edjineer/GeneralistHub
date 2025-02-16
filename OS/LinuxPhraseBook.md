@@ -41,6 +41,15 @@ Publication Year: 2006
 * apt vs apt-get vs dpkg
 * Linux magazine: a very apropos apt
 * sshfs
+* Loopback interface
+* How the internet really works, hops, traceroute
+* mtr as a ping and traceroute alternative
+* Wired equivalent privacy, essids
+* ifup
+* Routing tables
+* Is samba relevant? Does it really help bridge linux and windows?
+* wget vs curl
+
 
 ## Introduction
 
@@ -446,6 +455,54 @@ Publication Year: 2006
 
 ### Connectivity
 
+* ifconfig
+  * Stands for interface configuration
+  * -a for all
+  * ath0 is a wireless card
+    * Wireless PCMCIA card
+    * eth1 would be a secondary interface
+    * Could also show up as wlan0 for a wireless card
+  * eth0 is a ethernet card
+    * Plug in physical cables
+  * lo is a loopback interface
+    * allows machine to refer to itself, 127.0.0.1
+  * Configure a network interface
+    * To change ip adddr for an ethernet card eth0, ifconfig eth0 [new addr]
+* iwconfig = View staus of wireless network interfaces
+  * Can also configure them too
+  * ESSID: extended service set identifier
+* ping = Verify that the computer is running and accepting requests
+  * ping -c  = stop after x replies
+* traceroute = Trace the route packets take between two hosts
+  * *** indicates a 5 s timeout at the hop
+  * Can increase hops tried with -m
+  * mtr is better alternative to traceroute
+* host
+  * Performs DNS lookups
+* dhclient
+  * Grab a new address using DHCP
+* ifup
+  * Make a network connection active
+  * Note that its silent, use with ifconfig to see differences
+* ifdown = bring network connection down
+* route
+  * Display IP routing table
+* Troubleshooting network problems
+
 ### Working on the Network
 
+* ssh
+  * Avoid a password  with ssh-keygen -t dsa
+* sftp
+  * Securely transfer files between machines
+* scp = Securely copy files between hosts
+* rsync -v = Securely transfer and back up files  
+* wget = download files or websites non-interactively
+* curl = doenload sequential files and internet resources
+
 ### Windows Networking
+
+* Samba
+* Windows workgroup
+* samba shares
+* Samba bridges linux and windows environments
