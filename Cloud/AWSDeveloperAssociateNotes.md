@@ -749,15 +749,57 @@ Code integrations and Code Deployment
 
 ### Cloudwatch
 
+CloudWatch
+
+* Metrics
+* Detailed Monitoring
+* Logs, log stream
+  * Can export to S3 Bucket
+* Alarm Targets
+* Event Bridge builds on Cloudwatch
+
 ### AWS X-ray
+
+* Debug in production
+* Visual analysis of applications
+* Compatible with lots of apps
+* LEverages tracing requests
+  * Needs to import SDK
+  * Install Daemon or X Ray Kit
+* Concepts: Segments, Subsegments
+* Sampling Rules
 
 ### AWS Cloudtrail
 
+* Monitoring
+* Who made changes, kinda version control, enabled by default, used for governance, compliance and audits
+* Management Events, Data Events, and Insight Events
+
 ## 13. AWS Integration and Messaging
 
-### Amazon Simple Queue Service
+### Amazon Simple Queue Service (SQS)
+
+* Communicate with each other in apps
+* Synchronization between apps is challenging
+* Queue
+  * Standard Queue
+  * FIFO Queue
+* Producer
+* Consuming Messages
+* Auto Scaling Group
+* Decouple between application tiers
+* Dead letter Queue - DLQ
+* Delay Queue
+* Long Polling
+* Extended Client
+* List of the must-know APIs
+* FIFO
+  * Deduplication
+  * Message Grouping
 
 ### Amazon Simple Notification Service
+
+* 
 
 ### Kinesis
 
