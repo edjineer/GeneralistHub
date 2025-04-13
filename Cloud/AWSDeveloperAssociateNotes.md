@@ -797,11 +797,39 @@ CloudWatch
   * Deduplication
   * Message Grouping
 
-### Amazon Simple Notification Service
+### Amazon Simple Notification Service SNS
 
-* 
+* Common service, used for notifications
+* Send to email or other notification method
+* Event Producer sends to SNS Topic
+* Subscribers
+  * SMS, Emails, SQS, etc
+* AWS services send to SNS, or Cloudwatch, etc
 
 ### Kinesis
+
+* Collect, process and analyze streaming data in real time
+* Kinesis Data Stream
+  * Takes app, then creates shards
+  * Billed per shard, scales on shards
+  * Partition Keys to determine which shard it goes into
+  * Security
+* Kinesis Producer = App, java app, etc
+* Has an API to interact iwth it
+* Provisioned Throughput Exceed
+* Kinesis Consumers
+  * Types: Enhanced fan out(push), or shared fan-out(pull)
+  * AWS Lambda can be a consumer
+  * Configure batch size
+* KCL = Kinesis Client Library
+* Can use Amazon DynamoDB as destination
+* Shard Splitting
+* Merging Shards
+* Kinesis Data Firehose (alternative to Firehose)
+* Kinesis Data Analytics (SQL Application)
+* Ordering Data into Kinesis: used with partition to determie shard
+* Kinesis vs SQS Ordering vs SNS
+
 
 ## 14. Lambda and DynamoDB
 
