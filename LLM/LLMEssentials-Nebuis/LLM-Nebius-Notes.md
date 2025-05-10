@@ -53,7 +53,7 @@ Practice Exercises:
 
 ### 1.4 What goes wrong
 
-### 1.5 Choosing an LLM 
+### 1.5 Choosing an LLM
 
 ### 1.6 LLM Inference Parameters
 
