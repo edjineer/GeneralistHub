@@ -46,8 +46,22 @@ Practice Exercises:
   * Challenges: Names as first and last
   * Handling new lines
 * Task 2
+  * Come back
 
 ### 1.2 Tokenization
+
+* [Link to Colab](https://github.com/Nebius-Academy/LLM-Engineering-Essentials/blob/main/topic1/1.2_tokenization.ipynb) 
+* Prompts are tokenized before going into the LLM, completions are also generated token by token
+* Words are cut into subword units, not words. Having character level tokens
+* Tokens with " " are different than tokens without " "
+* Open source LLMs are available at Hugging Face
+* Different LLMs may have different tokenizers: example with gpt-4o-mini vs Qwen. Qwen uses G' as space instead of space
+* Qwen does not require logging in
+* LLMs don't usually see text on character level
+  * LLMs are not good at arithmetic, reversing strings, etc
+* Don't trust LLM Calculations
+
+Practice Exercises
 
 ### 1.3 Basic Prompting
 
