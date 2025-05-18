@@ -11,6 +11,7 @@ Author: Craig Scott, 2018
 * Linking non-target libraries
 * Test on what is a public, private interface
 * Test on static, shared, module
+* Does unset a variable clear out the string, or make it uncallable?
 
 ## Part 1: Fundamentals
 
@@ -112,8 +113,22 @@ Author: Craig Scott, 2018
 ### 5. Variables
 
 * Variable Basics
+  * `set(varName value [PARENT SCOPE])`
+  * Letters are case-sensitive
+  * CMake treats all variables as strings
+  * Spaces are encoded as a ; for example `set(myVar a b c) # myVar="a;b;c"`
+  * Variables do NOT need to be definied before using them; it is defaulted as an empty string
+  * Value of a variable is set with `${var}`
+  * Quotes require escaping with backslash
+  * New lines can be encoded
+  * Lua bracket syntax is also supported
+  * Can unset veraibles `unset(myVar)`
 * Env Variables
+  * Can retrieve environment variables `$ENV{varName}`, can also set
+  * If you set, it only affects the currently running cmake instance
+  * Setting like this isnt actually useful
 * Cache Variables
+  *
 * Manipulating Cache Variables
 * Debugging Variables and Diagnostics
 * String Handling

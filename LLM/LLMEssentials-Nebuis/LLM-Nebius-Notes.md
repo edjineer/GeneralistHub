@@ -65,6 +65,49 @@ Practice Exercises
 
 ### 1.3 Basic Prompting
 
+* Instruction and Context
+  * Three parts
+    * System: set style, tone, knowledge domain where LLM is supposed to answer. Role assignment
+    * Instruction: Tells LLM exactly what to do
+    * Context: Background info and specifics relevant to task
+* Advice
+  * Clarity, instructions, requirements, and restrictions
+  * Give a clear understanding for: style, length, level of details
+  * Example: "Do NOT use words: x, y, z; Only use words a, b, c"
+* Formatting
+  * LLMs are natural markdown users
+  * **Bold**, *italics*, Sections(#) CAPS
+* Negative prompting
+  * Example: It's more effecitve to say "Answer in 2-3 sentances" than "Don't be too wordy"
+* Role Assignment
+  * Assign it who or what it should impersonate
+* Levels of Details
+  * There may be improvization at any stage
+  * Example: Fantasy world. Asking "how's the weather" without telling the weather may lead to creative results inconsistent with the greater world
+  * **Hallucinations**: Unbased asssumptions from an LLM
+  * Recommendations to combat this:
+    * Assess which details are crucial, include them in the prompt. May bloat the prompt
+    * In system prompt, forbid LLM to discuss anything not related to the primary goal
+    * Add context and using RAG
+  * LLM Can only handle a certain level of detail
+    * Too many details lead to distortion
+    * 10 is too large for a number of requirements
+    * Contradictory requirements lead to inconsistent results
+  * Reasoning
+    * Detailed solution = Chain of Thought
+    * LLMs produce more accurate solutions when CoT instead of plopping out answers
+    * Most LLMs do CoT by default
+  * Extracting Answers
+    * "In the end, output only the net surplus after #ANSWER:", `answer = float(result.split("#ANSWER:")[1].strip())`
+    * Good to let it give some words, but be able to parse out the answer
+  * Non-Linear Reasoning
+    * Evolution to the CoT (CoT = LLM gets correct answer from first try). now NLR = May need to experiment, try other things
+    * Orchestration techniques: Tree of Thoughts, Graph of Thoughts
+    * Current Top NLR Models = Phi-4, Llama, DeepSeek R1
+  * Psychological Tricks
+    * LLMs are trained on human data, so human tricks can work
+    * "This is important for my career", "Take a deep breath and work this through step by step", "I'm going to pay you better if you answer this better"
+
 ### 1.4 What goes wrong
 
 ### 1.5 Choosing an LLM
